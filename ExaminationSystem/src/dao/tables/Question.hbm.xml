@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="dao.tables" auto-import="true">
+    <class name="Question">
+        <!-- 主键 ，映射-->
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="profession" column="profession" type="string" />
+        <property name="questionType" column="questionType" type="string" />
+        <property name="degreeOfDifficulty" column="degreeOfDifficulty" />
+        <property name="questionContent" column="questionContent" type="string" />
+        <property name="questionScore" column="questionScore" />
+        <property name="questionAnswer" column="questionAnswer" type="string" />
+        <property name="teacherId" column="teacherId" />
+        <property name="note" column="note" type="string" />
+    </class>
+</hibernate-mapping>

@@ -26,18 +26,13 @@ PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sour
         <property name="hibernate.cache.use_query_cache">true</property>
         <property name="connection.useUnicode">true</property>
         <property name="connection.characterEncoding">UTF-8</property>
-<!--         <mapping resource="dao/tables/Attendance.hbm.xml" />
-        <mapping resource="dao/tables/BuyEvent.hbm.xml" />
-        <mapping resource="dao/tables/DepleteEvent.hbm.xml" />
-        <mapping resource="dao/tables/Employee.hbm.xml" />
-        <mapping resource="dao/tables/Menu.hbm.xml" />
-        <mapping resource="dao/tables/MProvider.hbm.xml" />
-        <mapping resource="dao/tables/Objects.hbm.xml" />
-        <mapping resource="dao/tables/Orders.hbm.xml" />
-        <mapping resource="dao/tables/Staple.hbm.xml" />
-        <mapping resource="dao/tables/Stream.hbm.xml" />
-        <mapping resource="dao/tables/SystemUser.hbm.xml" />
-        <mapping resource="dao/tables/TableBegin.hbm.xml" />
-        <mapping resource="dao/tables/TableEnds.hbm.xml" /> -->
+        <mapping resource="dao/tables/Admin.hbm.xml" />
+        <mapping resource="dao/tables/Authority.hbm.xml" />
+        <mapping resource="dao/tables/ClassSchedule.hbm.xml" />
+        <mapping resource="dao/tables/JustNowTest.hbm.xml" />
+        <mapping resource="dao/tables/Question.hbm.xml" />
+        <mapping resource="dao/tables/Score.hbm.xml" />
+        <mapping resource="dao/tables/Student.hbm.xml" />
+        <mapping resource="dao/tables/Teacher.hbm.xml" />
     </session-factory>
 </hibernate-configuration>
