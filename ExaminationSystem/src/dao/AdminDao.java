@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -26,9 +27,26 @@ public class AdminDao extends UtilDao<Admin> {
         Transaction tx = session.beginTransaction();
 
         Admin oldObj = (Admin) session.get(Admin.class, id);
+        oldObj.setAuthority(newObj.getAuthority());
+        oldObj.setName(newObj.getName());
+        oldObj.setPassword(newObj.getPassword());
 
         tx.commit();
         session.close();
         return oldObj;
     }
+
+    public Admin getByName(String name) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+
+        Query query = session.createQuery("from Admin where name = ?");
+        query.setString(0, name);
+        Admin obj = (Admin) query.uniqueResult();
+
+        tx.commit();
+        session.close();
+        return obj;
+    }
+    
 }

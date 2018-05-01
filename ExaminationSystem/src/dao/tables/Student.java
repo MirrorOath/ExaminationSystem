@@ -8,8 +8,9 @@ public class Student {
     private String className;
     private Integer age;
     private String department;
-    private Integer authority;
+    private String authority;
     private String note;
+    private boolean success;
 
     public Integer getId() {
         return id;
@@ -67,11 +68,11 @@ public class Student {
         this.department = department;
     }
 
-    public Integer getAuthority() {
+    public String getAuthority() {
         return authority;
     }
 
-    public void setAuthority(Integer authority) {
+    public void setAuthority(String authority) {
         this.authority = authority;
     }
 
@@ -83,11 +84,19 @@ public class Student {
         this.note = note;
     }
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
     @Override
     public String toString() {
         return "Student [id=" + id + ", name=" + name + ", password=" + password + ", ethnic=" + ethnic + ", className="
                 + className + ", age=" + age + ", department=" + department + ", authority=" + authority + ", note="
-                + note + "]";
+                + note + ", success=" + success + "]";
     }
 
 }

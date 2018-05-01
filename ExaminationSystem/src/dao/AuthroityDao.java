@@ -26,6 +26,8 @@ public class AuthroityDao extends UtilDao<Authroity> {
         Transaction tx = session.beginTransaction();
 
         Authroity oldObj = (Authroity) session.get(Authroity.class, id);
+        oldObj.setAuthorityId(newObj.getAuthorityId());
+        oldObj.setAuthorityName(newObj.getAuthorityName());
 
         tx.commit();
         session.close();

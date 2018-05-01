@@ -12,7 +12,7 @@
         <property name="className" column="className" type="string" />
         <property name="age" column="age" />
         <property name="department" column="department" type="string" />
-        <property name="authority" column="authority" />
+        <property name="authority" column="authority" type="string" />
         <property name="note" column="note" type="string" />
     </class>
 </hibernate-mapping>

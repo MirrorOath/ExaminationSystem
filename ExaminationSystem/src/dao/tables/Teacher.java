@@ -10,6 +10,7 @@ public class Teacher {
     private String profession;
     private Integer authority;
     private String note;
+    private boolean success;
 
     public Integer getId() {
         return id;
@@ -83,11 +84,19 @@ public class Teacher {
         this.note = note;
     }
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
     @Override
     public String toString() {
         return "Teacher [id=" + id + ", name=" + name + ", password=" + password + ", sex=" + sex + ", age=" + age
                 + ", department=" + department + ", profession=" + profession + ", authority=" + authority + ", note="
-                + note + "]";
+                + note + ", success=" + success + "]";
     }
 
 }

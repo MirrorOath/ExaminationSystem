@@ -25,6 +25,11 @@ public class JustNowTestDao  extends UtilDao<JustNowTest> {
         Transaction tx = session.beginTransaction();
 
         JustNowTest oldObj = (JustNowTest) session.get(JustNowTest.class, id);
+        oldObj.setEndTime(newObj.getEndTime());
+        oldObj.setNumberOfQuestions(newObj.getNumberOfQuestions());
+        oldObj.setStartTime(newObj.getStartTime());
+        oldObj.setTestName(newObj.getTestName());
+        oldObj.setTestScore(newObj.getTestScore());
 
         tx.commit();
         session.close();

@@ -24,6 +24,13 @@ public class ScoreDao extends UtilDao<Score> {
         Transaction tx = session.beginTransaction();
 
         Score oldObj = (Score) session.get(Score.class, id);
+        oldObj.setCourseNo(newObj.getCourseNo());
+        oldObj.setPass(newObj.isPass());
+        oldObj.setReTestMark(newObj.getReTestMark());
+        oldObj.setScore(newObj.getScore());
+        oldObj.setStuId(newObj.getStuId());
+        oldObj.setTotalScore(newObj.getTotalScore());
+        oldObj.setReTest(newObj.isReTest());
 
         tx.commit();
         session.close();

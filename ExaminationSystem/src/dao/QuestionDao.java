@@ -26,6 +26,14 @@ public class QuestionDao extends UtilDao<Question> {
         Transaction tx = session.beginTransaction();
 
         Question oldObj = (Question) session.get(Question.class, id);
+        oldObj.setDegreeOfDifficulty(newObj.getDegreeOfDifficulty());
+        oldObj.setNote(newObj.getNote());
+        oldObj.setProfession(newObj.getProfession());
+        oldObj.setQuestionAnswer(newObj.getQuestionAnswer());
+        oldObj.setQuestionContent(newObj.getQuestionContent());
+        oldObj.setQuestionScore(newObj.getQuestionScore());
+        oldObj.setQuestionType(newObj.getQuestionType());
+        oldObj.setTeacherId(newObj.getTeacherId());
 
         tx.commit();
         session.close();

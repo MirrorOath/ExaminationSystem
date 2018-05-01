@@ -27,6 +27,10 @@ public class ClassScheduleDao extends UtilDao<ClassSchedule> {
         Transaction tx = session.beginTransaction();
 
         ClassSchedule oldObj = (ClassSchedule) session.get(ClassSchedule.class, id);
+        oldObj.setClassName(newObj.getClassName());
+        oldObj.setClassType(newObj.getClassType());
+        oldObj.setNote(newObj.getNote());
+        oldObj.setTeacherId(newObj.getTeacherId());
 
         tx.commit();
         session.close();
