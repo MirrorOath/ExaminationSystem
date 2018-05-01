@@ -39,8 +39,7 @@
                         <li class="nav-header">学生个人空间</li>
                         <li><a href="#panel-75676"
                             data-toggle="tab">查询成绩</a></li>
-                        <li><a href="#panel-75677"
-                            data-toggle="tab">考试</a></li>
+                        <li><a href="test.jsp">考试</a></li>
                         <li class="nav-header">功能列表</li>
                         <li class="active"><a href="#panel-75678"
                             data-toggle="tab">个人信息</a></li>
