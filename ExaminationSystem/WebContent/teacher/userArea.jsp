@@ -70,6 +70,8 @@ form {
                         <li class="nav-header">教师个人空间</li>
                         <li><a href="#panel-75676"
                             data-toggle="tab">成绩查询</a></li>
+                        <li><a href="#panel-75376"
+                            data-toggle="tab">试题添加</a></li>
                         <li><a href="#panel-75677"
                             data-toggle="tab">试题增删改查</a></li>
                         <li class="nav-header">功能列表</li>
@@ -86,6 +88,72 @@ form {
                 <div class="span6">
                     <div class="tab-content">
                         <div class="tab-pane" id="panel-75676">1</div>
+                        <div class="tab-pane" id="panel-75376">
+
+                            <div class="span6">
+                                <label>试题类型</label>
+                                <div class="row-fluid">
+                                    <div class="btn-group">
+                                        <button class="btn"
+                                            id="addQuestionType">请选择</button>
+                                        <button data-toggle="dropdown"
+                                            class="btn dropdown-toggle">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a
+                                                href="javascript:SetFirstStr('选择题', 'addQuestionType')">选择题</a>
+                                            </li>
+                                            <li><a
+                                                href="javascript:SetFirstStr('计算题', 'addQuestionType')">计算题</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <label class="control-label"
+                                    for="addProfession">专业</label>
+                                <div class="controls">
+                                    <input id="addProfession"
+                                        type="text" />
+                                </div>
+                                <label class="control-label"
+                                    for="addDegreeOfDifficulty">难易程度</label>
+                                <div class="controls">
+                                    <input id="addDegreeOfDifficulty"
+                                        type="text" />
+                                </div>
+                                <label class="control-label"
+                                    for="addQuestionScore">试题分数</label>
+                                <div class="controls">
+                                    <input id="addQuestionScore"
+                                        type="text" />
+                                </div>
+                                <label class="control-label"
+                                    for="addTeacherId">教师编号</label>
+                                <div class="controls">
+                                    <input id="addTeacherId" type="text" />
+                                </div>
+                                <label class="control-label"
+                                    for="addNote">备注</label>
+                                <div class="controls">
+                                    <input id="addNote" type="text" />
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <label class="control-label"
+                                    for="questionContent">题目</label>
+                                <div class="controls">
+                                    <input id="questionContent"
+                                        type="text" />
+                                </div>
+                                <label class="control-label"
+                                    for="questionAnswer">答案</label>
+                                <div class="controls">
+                                    <input id="questionAnswer"
+                                        type="text" />
+                                </div>
+                            </div>
+                        </div>
                         <div class="tab-pane" id="panel-75677">
                             <div>
                                 <table id="Question" title="试题库"
