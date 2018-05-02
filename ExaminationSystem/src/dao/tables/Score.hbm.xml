@@ -7,7 +7,9 @@
             <generator class="native"/>
         </id>
         <property name="stuId" column="stuId" />
+        <property name="jsTestId" column="jsTestId" />
         <property name="courseNo" column="courseNo" />
+        <property name="courseName" column="courseName" />
         <property name="totalScore" column="totalScore" />
         <property name="score" column="score" />
         <property name="Pass" column="Pass" />

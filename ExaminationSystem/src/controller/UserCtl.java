@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import controller.util.Count;
 import dao.AdminDao;
+import dao.JustNowTestDao;
+import dao.ScoreDao;
 import dao.StudentDao;
 import dao.TeacherDao;
 import dao.tables.Admin;
+import dao.tables.JustNowTest;
+import dao.tables.Score;
 import dao.tables.Student;
 import dao.tables.Teacher;
 
@@ -23,6 +30,10 @@ public class UserCtl {
     TeacherDao teacherDao;
     @Autowired
     StudentDao studentDao;
+    @Autowired
+    ScoreDao scoreDao;
+    @Autowired
+    JustNowTestDao justNowTestDao;
 
     @RequestMapping("signUp")
     public @ResponseBody Integer signUp(String name, String password, String type) {
@@ -129,6 +140,21 @@ public class UserCtl {
             return false;
         teacherDao.update(oldObj.getId(), obj);
         return true;
+    }
+    
+    @RequestMapping("getScore")
+    public @ResponseBody List<Score> getScore(HttpSession session){
+        Student obj = (Student) session.getAttribute("student");
+        if(obj == null)
+            return null;
+        List<Score> objs = scoreDao.getByStuId(obj.getId());
+        JustNowTest t;
+        for(Score s : objs) {
+            t = justNowTestDao.getById(s.getJsTestId());
+            s.setStartTime(Count.getStringDate(t.getStartTime()));
+            s.setEndTime(Count.getStringDate(t.getEndTime()));
+        }
+        return objs;
     }
     
 

@@ -139,7 +139,7 @@ function addQst(){
     var questionContent = "";
     if ("选择题" == questionType) {
         questionContent += "<h3>题干</h3><h4>"
-            + document.getElementById("qstContent").value + "</h4>选项↓<hr/><p>A."
+            + document.getElementById("qstContent").value + "</h4><hr/><p>A."
             + document.getElementById("questionAnswerA").value + "</p><p>B."
             + document.getElementById("questionAnswerB").value + "</p><p>C."
             + document.getElementById("questionAnswerC").value + "</p><p>D."

@@ -2,13 +2,16 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import dao.tables.Score;
 import dao.util.UtilDao;
 import dao.util.UtilFactory;
 
+@Repository
 public class ScoreDao extends UtilDao<Score> {
 
     public List<Score> getAll() {
@@ -36,4 +39,19 @@ public class ScoreDao extends UtilDao<Score> {
         session.close();
         return oldObj;
     }
+
+    @SuppressWarnings("unchecked")
+    public List<Score> getByStuId(Integer id) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+
+        Query query = session.createQuery("from Score where stuId = ?");
+        query.setString(0, id.toString());
+        List<Score> objs = (List<Score>) query.list();
+
+        tx.commit();
+        session.close();
+        return objs;
+    }
+
 }

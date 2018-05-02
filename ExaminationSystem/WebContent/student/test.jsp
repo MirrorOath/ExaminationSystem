@@ -13,7 +13,7 @@
 <script type="text/javascript">
 window.onload = function() {
     getTestPaper();
-    getStuInfo();
+    testPageGetStuInfo();
 }
 </script>
 

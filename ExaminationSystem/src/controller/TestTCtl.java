@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import controller.util.Count;
 import dao.JustNowTestDao;
 import dao.QuestionDao;
+import dao.ScoreDao;
+import dao.StudentDao;
+import dao.tables.JustNowTest;
 import dao.tables.Question;
+import dao.tables.Score;
 
 @Controller
 @RequestMapping(value = "/jnTest/")
@@ -21,6 +25,10 @@ public class TestTCtl {
     QuestionDao questionDao;
     @Autowired
     JustNowTestDao justNowTestDao;
+    @Autowired
+    StudentDao studentDao;;
+    @Autowired
+    ScoreDao scoreDao;
 
     @RequestMapping("getTestPaper")
     public @ResponseBody List<Question> getTestPaper() {
@@ -38,4 +46,45 @@ public class TestTCtl {
         }
         return result;
     }
+
+    @RequestMapping("postTestPaper")
+    public @ResponseBody boolean postTestPaper(String startTime, String qstA0, String qstA1, String qstA2,
+            Integer qstId0, Integer qstId1, Integer qstId2, String stuName, String testName, String department) {
+        
+        Question qst0 = questionDao.getById(qstId0);
+        Question qst1 = questionDao.getById(qstId1);
+        Question qst2 = questionDao.getById(qstId2);
+        Double totalScore = qst0.getQuestionScore() + qst1.getQuestionScore() + qst2.getQuestionScore();
+        Double Score = 0.0;
+        if (qstA0.equals(qst0.getQuestionAnswer())) {
+            Score += qst0.getQuestionScore();
+        }
+        if (qstA1.equals(qst1.getQuestionAnswer())) {
+            Score += qst1.getQuestionScore();
+        }
+        if (qstA2.equals(qst2.getQuestionAnswer())) {
+            Score += qst2.getQuestionScore();
+        }
+        JustNowTest jsTeset = new JustNowTest();
+        jsTeset.setStartTime(Count.stringToDate(startTime));
+        jsTeset.setEndTime(new Date());
+        jsTeset.setNumberOfQuestions("3");
+        jsTeset.setTestScore(totalScore);
+        jsTeset.setTestName(testName);
+        jsTeset = justNowTestDao.save(jsTeset);
+        Score scoreObj = new Score();
+        scoreObj.setStuId(studentDao.getByName(stuName).getId());
+        scoreObj.setTotalScore(totalScore);
+        scoreObj.setScore(Score);
+        scoreObj.setJsTestId(jsTeset.getId());
+        scoreObj.setPass((Score / totalScore) > 0.6 ? true : false);
+        scoreObj.setReTest(false);
+        scoreObj.setReTestMark(0.0);
+        scoreObj.setCourseNo(0);
+        scoreObj.setCourseName(department);
+        scoreDao.save(scoreObj);
+
+        return true;
+    }
+
 }

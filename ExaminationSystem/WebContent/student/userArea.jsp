@@ -26,6 +26,7 @@
 <script type="text/javascript">
 window.onload = function() {
     getStuInfo();
+    getScore();
 }
 </script>
 
@@ -57,7 +58,10 @@ window.onload = function() {
                 <div class="span2"></div>
                 <div class="span6">
                     <div class="tab-content">
-                        <div class="tab-pane" id="panel-75676">1</div>
+                        <div class="tab-pane" id="panel-75676">
+                            <div id="stuScoreDiv">
+                            </div>
+                        </div>
                         <div class="tab-pane" id="panel-75677">2</div>
                         <div class="tab-pane active" id="panel-75678">
                             <div class="row-fluid">
