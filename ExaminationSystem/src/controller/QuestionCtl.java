@@ -17,26 +17,30 @@ public class QuestionCtl {
     QuestionDao questionDao;
 
     @RequestMapping("GetQuestions")
-    public @ResponseBody List<Question> GetQuestions(){
+    public @ResponseBody List<Question> GetQuestions() {
         return questionDao.getAll();
     }
 
     @RequestMapping("SaveQuestion")
-    public @ResponseBody Question SaveQuestion(Question obj){
+    public @ResponseBody Question SaveQuestion(Question obj) {
         return questionDao.save(obj);
     }
-    
 
     @RequestMapping("UpdateQuestion")
-    public @ResponseBody Question UpdateQuestion(Question obj){
+    public @ResponseBody Question UpdateQuestion(Question obj) {
         return questionDao.update(obj.getId(), obj);
     }
-    
 
     @RequestMapping("DelQuestion")
-    public @ResponseBody boolean DelQuestion(Integer id){
+    public @ResponseBody boolean DelQuestion(Integer id) {
         questionDao.del(questionDao.getById(id));
         return true;
     }
-    
+
+    @RequestMapping("addQst")
+    public @ResponseBody Integer addQst() {
+        return null;
+
+    }
+
 }

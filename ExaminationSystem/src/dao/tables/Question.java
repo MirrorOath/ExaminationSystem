@@ -10,6 +10,7 @@ public class Question {
     private String questionAnswer;
     private Integer teacherId;
     private String note;
+    private String startTime;
 
     public Integer getId() {
         return id;
@@ -83,12 +84,20 @@ public class Question {
         this.note = note;
     }
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
     @Override
     public String toString() {
         return "Question [id=" + id + ", profession=" + profession + ", questionType=" + questionType
                 + ", degreeOfDifficulty=" + degreeOfDifficulty + ", questionContent=" + questionContent
                 + ", questionScore=" + questionScore + ", questionAnswer=" + questionAnswer + ", teacherId=" + teacherId
-                + ", note=" + note + "]";
+                + ", note=" + note + ", startTime=" + startTime + "]";
     }
 
 }

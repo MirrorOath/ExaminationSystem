@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" charset="UTF-8" name="viewport"
     content="width=device-width, initial-scale=1.0">
-<title>学生个人空间</title>
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"
     media="screen">
+<title>学生个人空间</title>
 
 <style>
 .parent {
@@ -22,7 +22,9 @@
 </style>
 
 <script type="text/javascript">
-    
+window.onload = function() {
+    getStuInfo();
+}
 </script>
 
 </head>

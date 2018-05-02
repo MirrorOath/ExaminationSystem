@@ -1,8 +1,4 @@
-window.onload = function() {
 
-    getStuInfo();
-
-}
 
 function getStuInfo() {
     $.ajax({
@@ -63,7 +59,6 @@ function change() {
 }
 
 function signOut() {
-
     $.ajax({
         url : "../user/signOut.action",
         type : "post",
@@ -73,3 +68,29 @@ function signOut() {
         }
     })
 }
+
+function getTestPaper(){
+    $.ajax({
+        url : "../jnTest/getTestPaper.action",
+        type : "post",
+        dateType : "json",
+        success : function(data) {
+            if (data == null)
+                alert("该专业无试题，请老师添加");
+            $.each(data, function(n, index){
+                document.getElementById("startTime").value = index.startTime;
+                document.getElementById("questionContent").innerHTML += index.questionContent;
+                document.getElementById("questionContent").innerHTML 
+                    += "<label class='control-label' for='questionAnswer" + n + 
+                    		"' value='" + index.id +
+                    		"' id='answer" + n +
+                    		"' >请输入答案</label>"
+                    + "<div class='controls'><input id='questionAnswer" + n + 
+                    		"' type='text' /></div><hr/><br/><hr/>";
+            })
+            document.getElementById("subBtn").innerHTML 
+                += "<button onclick='postTestPaper()' class='btn' >提交试卷</button>";
+        }
+    })
+}
+
