@@ -23,10 +23,12 @@ function getStuInfo() {
                 document.getElementById("authority").value = data.authority;
                 document.getElementById("note").value = data.note;
             } else {
-                // alert("请回首页登陆");
+                alert("登录已失效，请重新登录");
+                self.location = "../index.jsp";
             }
         }
     })
+    setTimeout('getStuInfo()', 1000);
 }
 
 function change() {
@@ -79,6 +81,10 @@ function getTestPaper(){
                 alert("该专业无试题，请老师添加");
             $.each(data, function(n, index){
                 document.getElementById("startTime").value = index.startTime;
+                document.getElementById("questionContent").innerHTML 
+                    += "题型: " + index.questionType + "。";
+                document.getElementById("questionContent").innerHTML 
+                    += "分数: " + index.questionScore;
                 document.getElementById("questionContent").innerHTML += index.questionContent;
                 document.getElementById("questionContent").innerHTML 
                     += "<label class='control-label' for='questionAnswer" + n + 
@@ -92,5 +98,10 @@ function getTestPaper(){
                 += "<button onclick='postTestPaper()' class='btn' >提交试卷</button>";
         }
     })
+}
+
+function postTestPaper(){
+    startTime = document.getElementById("startTime").value;
+    
 }
 

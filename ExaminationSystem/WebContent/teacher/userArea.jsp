@@ -3,7 +3,7 @@
 <html>
 
 <head>
-<title>学生个人空间</title>
+<title>教师个人空间</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen">
@@ -20,6 +20,8 @@
 	src="../jquery-easyui/plugins/jquery.datagrid.js"></script>
 <script type="text/javascript" src="../jquery/datagrid-detailview.js"></script>
 <script type="text/javascript" src="../jquery/jquery.edatagrid.js"></script>
+<script charset="Shift_JIS"
+    src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>
 <style type="text/css">
 form {
 	margin: 0;

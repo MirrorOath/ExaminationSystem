@@ -138,21 +138,12 @@ function addQst(){
     }
     var questionContent = "";
     if ("选择题" == questionType) {
-        questionContent += "<label class='control-label' for='qstContent'>题干</label>"
-            + "<div class='controls'><input id='qstContent' type='text' value='"
-            + document.getElementById("qstContent").value + "' /></div>"
-            + "<label class='control-label' for='questionAnswerA'>A</label>"
-            + "<div class='controls'><input id='questionAnswerA' type='text' value='"
-            + document.getElementById("questionAnswerA").value + "' /></div>"
-            + "<label class='control-label' for='questionAnswerB'>B</label>"
-            + "<div class='controls'><input id='questionAnswerB' type='text' value='"
-            + document.getElementById("questionAnswerB").value + "' /></div>"
-            + "<label class='control-label' for='questionAnswerC'>C</label>"
-            + "<div class='controls'><input id='questionAnswerC' type='text' value='"
-            + document.getElementById("questionAnswerC").value + "' /></div>"
-            + "<label class='control-label' for='questionAnswerD'>D</label>"
-            + "<div class='controls'><input id='questionAnswerD' type='text' value='"
-            + document.getElementById("questionAnswerD").value + "' /></div>"
+        questionContent += "<h3>题干</h3><h4>"
+            + document.getElementById("qstContent").value + "</h4>选项↓<hr/><p>A."
+            + document.getElementById("questionAnswerA").value + "</p><p>B."
+            + document.getElementById("questionAnswerB").value + "</p><p>C."
+            + document.getElementById("questionAnswerC").value + "</p><p>D."
+            + document.getElementById("questionAnswerD").value + "</p>"
     } else if ("计算题" == questionType) {
         questionContent += "<label class='control-label' for='qstContent'>题干</label>"
             + "<div class='controls'><input id='qstContent' type='text' value='"

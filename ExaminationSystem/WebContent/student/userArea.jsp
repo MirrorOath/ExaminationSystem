@@ -9,6 +9,8 @@
     media="screen">
 <title>学生个人空间</title>
 
+<script charset="Shift_JIS"
+    src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>
 <style>
 .parent {
     position: absolute;

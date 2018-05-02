@@ -13,6 +13,7 @@
 <script type="text/javascript">
 window.onload = function() {
     getTestPaper();
+    getStuInfo();
 }
 </script>
 
@@ -35,6 +36,48 @@ window.onload = function() {
 				<label class="control-label" for="startTime">试卷生成时间</label>
 				<div class="controls">
 					<input id="startTime" type="text" disabled="true" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="showName">姓名</label>
+				<div class="controls">
+					<input id="showName" type="text" disabled="true" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="showEthnic">民族</label>
+				<div class="controls">
+					<input id="showEthnic" type="text" disabled="true" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="showClassName">班级</label>
+				<div class="controls">
+					<input id="showClassName" type="text" disabled="true" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="showAge">年龄</label>
+				<div class="controls">
+					<input id="showAge" type="text" disabled="true" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="showDepartment">专业</label>
+				<div class="controls">
+					<input id="showDepartment" type="text" disabled="true" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="showAuthority">系别</label>
+				<div class="controls">
+					<input id="showAuthority" type="text" disabled="true" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="showNote">备注</label>
+				<div class="controls">
+					<input id="showNote" type="text" disabled="true" />
 				</div>
 			</div>
 		</div>
