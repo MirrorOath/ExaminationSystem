@@ -51,6 +51,7 @@ form {
 <script type="text/javascript">
     window.onload = function() {
         getAdmInfo();
+        getAdmInfoForChange();
     }
 </script>
 

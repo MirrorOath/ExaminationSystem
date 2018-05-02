@@ -27,6 +27,7 @@
 window.onload = function() {
     getStuInfo();
     getScore();
+    getStuForChangeMessage();
 }
 </script>
 

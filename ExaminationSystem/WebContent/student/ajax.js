@@ -14,6 +14,22 @@ function getStuInfo() {
                 document.getElementById("showDepartment").value = data.department;
                 document.getElementById("showAuthority").value = data.authority;
                 document.getElementById("showNote").value = data.note;
+            } else {
+                alert("登录已失效，请重新登录");
+                self.location = "../index.jsp";
+            }
+        }
+    })
+    setTimeout('getStuInfo()', 1000);
+}
+
+function getStuForChangeMessage() {
+    $.ajax({
+        url : "../user/getStu.action",
+        type : "post",
+        dateType : "json",
+        success : function(data) {
+            if (data.success) {
                 document.getElementById("name").value = data.name;
                 document.getElementById("password").value = data.password;
                 document.getElementById("ethnic").value = data.ethnic;
@@ -28,7 +44,6 @@ function getStuInfo() {
             }
         }
     })
-    setTimeout('getStuInfo()', 1000);
 }
 
 function reTest(scoreId){
@@ -126,6 +141,7 @@ function change() {
         dateType : "json",
         success : function(data) {
             getStuInfo();
+            getStuForChangeMessage();
         }
     })
 }

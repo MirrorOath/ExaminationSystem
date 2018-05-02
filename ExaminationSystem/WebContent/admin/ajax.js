@@ -9,6 +9,23 @@ function getAdmInfo() {
             if (data.success) {
                 document.getElementById("showName").value = data.name;
                 document.getElementById("showAuthority").value = data.authority;
+            } else {
+                alert("登录已失效，请重新登录");
+                self.location = "../index.jsp";
+            }
+        }
+    })
+    setTimeout('getAdmInfo()', 1000);
+}
+
+
+function getAdmInfoForChange() {
+    $.ajax({
+        url: "../admin/getAdmInfo.action",
+        type: "post",
+        dateType: "json",
+        success: function (data) {
+            if (data.success) {
                 document.getElementById("name").value = data.name;
                 document.getElementById("password").value = data.password;
                 document.getElementById("authority").value = data.authority;
@@ -18,7 +35,6 @@ function getAdmInfo() {
             }
         }
     })
-    setTimeout('getAdmInfo()', 1000);
 }
 
 function change() {
@@ -36,6 +52,7 @@ function change() {
         dateType: "json",
         success: function (data) {
             alert("修改成功，请刷新查看");
+            getAdmInfoForChange();
         }
     })
 }

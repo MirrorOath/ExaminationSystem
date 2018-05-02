@@ -1,6 +1,7 @@
 window.onload = function () {
 
     getStuInfo();
+    getStuInfoForChage();
 
 }
 
@@ -18,6 +19,22 @@ function getStuInfo() {
                 document.getElementById("showProfession").value = data.profession;
                 document.getElementById("showAuthority").value = data.authority;
                 document.getElementById("showNote").value = data.note;
+            } else {
+                alert("登录已失效，请重新登录");
+                self.location = "../index.jsp";
+            }
+        }
+    })
+    setTimeout('getStuInfo()', 1000);
+}
+
+function getStuInfoForChage() {
+    $.ajax({
+        url: "../user/getTea.action",
+        type: "post",
+        dateType: "json",
+        success: function (data) {
+            if (data.success) {
                 document.getElementById("name").value = data.name;
                 document.getElementById("password").value = data.password;
                 document.getElementById("sex").value = data.sex;
@@ -34,7 +51,6 @@ function getStuInfo() {
             }
         }
     })
-    setTimeout('getStuInfo()', 1000);
 }
 
 function change() {
@@ -62,6 +78,7 @@ function change() {
         dateType: "json",
         success: function (data) {
             alert("修改成功，请刷新查看");
+            getStuInfoForChage();
         }
     })
 }
