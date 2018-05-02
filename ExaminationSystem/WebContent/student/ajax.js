@@ -31,6 +31,20 @@ function getStuInfo() {
     setTimeout('getStuInfo()', 1000);
 }
 
+function reTest(scoreId){
+    $.ajax({
+        url : "../jnTest/setReTest.action",
+        data : {
+            scoreId : scoreId
+        },
+        type : "post",
+        dateType : "json",
+        success : function(data) {
+            self.location = "test.jsp";
+        }
+    })
+}
+
 function getScore(){
     $.ajax({
         url : "../user/getScore.action",
@@ -50,7 +64,8 @@ function getScore(){
                     + "<td>" + index.score + "</td>"
                     + "<td>" + index.startTime + "</td>"
                     + "<td>" + index.endTime + "</td>"
-                    + "<td>" + (index.pass == true ? "是" : "否") + "</td>"
+                    + "<td>" + (index.pass == true ? "是" 
+                            : "<a href='javascript:reTest(" + index.id + ")'>否</a>") + "</td>"
                     + "<td>" + (index.reTest == true ? "是" : "否") + "</td>"
                     + "<td>" + index.reTestMark + "</td>"
                     + "</tr>";

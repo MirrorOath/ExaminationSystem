@@ -57,6 +57,14 @@ form {
             destroyUrl : '../qst/DelQuestion.action'
         });
     });
+    $(function() {
+        $('#Score').edatagrid({
+            url : '../score/GetScores.action',
+            saveUrl : '../score/SaveScore.action',
+            updateUrl : '../score/UpdateScore.action',
+            destroyUrl : '../score/DelScore.action'
+        });
+    });
 </script>
 
 </head>
@@ -84,7 +92,51 @@ form {
 				<div class="span2"></div>
 				<div class="span6">
 					<div class="tab-content">
-						<div class="tab-pane" id="panel-75676">1</div>
+						<div class="tab-pane" id="panel-75676">
+							<div>
+								<table id="Score" title="试题库"
+									style="width: 750px; height: 250px" toolbar="#ScoreToolbar"
+									pagination="true" idField="id" rownumbers="true"
+									fitColumns="true" singleSelect="true">
+									<thead>
+										<tr>
+											<th field="id" width="5"
+												editor="{type:'validatebox',options:{readonly:true}}">得分记录ID</th>
+											<th field="stuId" width="5"
+												editor="{type:'validatebox',options:{required:true}}">学生ID</th>
+                                            <th field="jsTestId" width="5"
+                                                editor="{type:'validatebox',options:{required:true}}">临时试卷ID</th>
+                                            <th field="courseName" width="10"
+                                                editor="{type:'validatebox',options:{required:true}}">专业</th>
+                                            <th field="totalScore" width="5"
+                                                editor="{type:'validatebox',options:{required:true}}">总分</th>
+                                            <th field="score" width="5"
+                                                editor="{type:'validatebox',options:{required:true}}">得分</th>
+                                            <th field="pass" width="5"
+                                                editor="{type:'validatebox',options:{required:true}}">是否及格</th>
+                                            <th field="reTest" width="5"
+                                                editor="{type:'validatebox',options:{required:true}}">是否重考</th>
+                                            <th field="reTestMark" width="10"
+                                                editor="{type:'validatebox',options:{required:true}}">重考得分</th>
+										</tr>
+									</thead>
+								</table>
+								<div id="ScoreToolbar">
+									<a href="#Score" class="easyui-linkbutton"
+										iconCls="icon-add" plain="true"
+										onclick="javascript:$('#Score').edatagrid('addRow')">添加</a>
+									<a href="#Score" class="easyui-linkbutton"
+										iconCls="icon-remove" plain="true"
+										onclick="javascript:$('#Score').edatagrid('destroyRow')">删除</a>
+									<a href="#Score" class="easyui-linkbutton"
+										iconCls="icon-save" plain="true"
+										onclick="javascript:$('#Score').edatagrid('saveRow')">保存</a>
+									<a href="#Score" class="easyui-linkbutton"
+										iconCls="icon-undo" plain="true"
+										onclick="javascript:$('#Score').edatagrid('cancelRow')">取消</a>
+								</div>
+							</div>
+						</div>
 						<div class="tab-pane" id="panel-75376">
 
 							<div class="span6">

@@ -36,11 +36,7 @@ public class QuestionCtl {
         questionDao.del(questionDao.getById(id));
         return true;
     }
+    
 
-    @RequestMapping("addQst")
-    public @ResponseBody Integer addQst() {
-        return null;
-
-    }
 
 }
