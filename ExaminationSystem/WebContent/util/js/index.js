@@ -100,6 +100,7 @@ function signIn() {
                 break;
             case 0:
                 alert("登陆成功:管理员");
+                self.location="../admin/userArea.jsp";
                 break;
             case 1:
                 alert("登陆成功:教师");

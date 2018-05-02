@@ -3,7 +3,7 @@
 <html>
 
 <head>
-<title>教师个人空间</title>
+<title>管理员个人空间</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen">
@@ -21,7 +21,7 @@
 <script type="text/javascript" src="../jquery/datagrid-detailview.js"></script>
 <script type="text/javascript" src="../jquery/jquery.edatagrid.js"></script>
 <script charset="Shift_JIS"
-    src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>
+	src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>
 <style type="text/css">
 form {
 	margin: 0;
@@ -49,6 +49,28 @@ form {
 </style>
 
 <script type="text/javascript">
+    window.onload = function() {
+        getAdmInfo();
+    }
+</script>
+
+<script type="text/javascript">
+    $(function() {
+        $('#Student').edatagrid({
+            url : '../admin/GetStudents.action',
+            saveUrl : '../admin/SaveStudent.action',
+            updateUrl : '../admin/UpdateStudent.action',
+            destroyUrl : '../admin/DelStudent.action'
+        });
+    });
+    $(function() {
+        $('#Teacher').edatagrid({
+            url : '../admin/GetTeachers.action',
+            saveUrl : '../admin/SaveTeacher.action',
+            updateUrl : '../admin/UpdateTeacher.action',
+            destroyUrl : '../admin/DelTeacher.action'
+        });
+    });
     $(function() {
         $('#Question').edatagrid({
             url : '../qst/GetQuestions.action',
@@ -77,10 +99,11 @@ form {
 			<div class="row-fluid">
 				<div class="span2">
 					<ul class="nav nav-list well">
-						<li class="nav-header">教师个人空间</li>
-						<li><a href="#panel-75676" data-toggle="tab">成绩查询</a></li>
-						<li><a href="#panel-75376" data-toggle="tab">试题添加</a></li>
-						<li><a href="#panel-75677" data-toggle="tab">试题增删改查</a></li>
+						<li class="nav-header">管理员</li>
+						<li><a href="#panel-73276" data-toggle="tab">学生管理</a></li>
+						<li><a href="#panel-75376" data-toggle="tab">教师管理</a></li>
+						<li><a href="#panel-75677" data-toggle="tab">试题管理</a></li>
+						<li><a href="#panel-75676" data-toggle="tab">成绩单管理</a></li>
 						<li class="nav-header">功能列表</li>
 						<li class="active"><a href="#panel-75678" data-toggle="tab">个人信息</a></li>
 						<li><a href="#panel-75679" data-toggle="tab">修改个人信息</a></li>
@@ -104,84 +127,122 @@ form {
 												editor="{type:'validatebox',options:{readonly:true}}">得分记录ID</th>
 											<th field="stuId" width="5"
 												editor="{type:'validatebox',options:{required:true}}">学生ID</th>
-                                            <th field="jsTestId" width="5"
-                                                editor="{type:'validatebox',options:{required:true}}">临时试卷ID</th>
-                                            <th field="courseName" width="10"
-                                                editor="{type:'validatebox',options:{required:true}}">专业</th>
-                                            <th field="totalScore" width="5"
-                                                editor="{type:'validatebox',options:{required:true}}">总分</th>
-                                            <th field="score" width="5"
-                                                editor="{type:'validatebox',options:{required:true}}">得分</th>
-                                            <th field="pass" width="5"
-                                                editor="{type:'validatebox',options:{required:true}}">是否及格</th>
-                                            <th field="reTest" width="5"
-                                                editor="{type:'validatebox',options:{required:true}}">是否重考</th>
-                                            <th field="reTestMark" width="10"
-                                                editor="{type:'validatebox',options:{required:true}}">重考得分</th>
+											<th field="jsTestId" width="5"
+												editor="{type:'validatebox',options:{required:true}}">临时试卷ID</th>
+											<th field="courseName" width="10"
+												editor="{type:'validatebox',options:{required:true}}">专业</th>
+											<th field="totalScore" width="5"
+												editor="{type:'validatebox',options:{required:true}}">总分</th>
+											<th field="score" width="5"
+												editor="{type:'validatebox',options:{required:true}}">得分</th>
+											<th field="pass" width="5"
+												editor="{type:'validatebox',options:{required:true}}">是否及格</th>
+											<th field="reTest" width="5"
+												editor="{type:'validatebox',options:{required:true}}">是否重考</th>
+											<th field="reTestMark" width="10"
+												editor="{type:'validatebox',options:{required:true}}">重考得分</th>
 										</tr>
 									</thead>
 								</table>
 								<div id="ScoreToolbar">
-									<a href="#Score" class="easyui-linkbutton"
-										iconCls="icon-add" plain="true"
-										onclick="javascript:$('#Score').edatagrid('addRow')">添加</a>
-									<a href="#Score" class="easyui-linkbutton"
-										iconCls="icon-remove" plain="true"
+									<a href="#Score" class="easyui-linkbutton" iconCls="icon-add"
+										plain="true"
+										onclick="javascript:$('#Score').edatagrid('addRow')">添加</a> <a
+										href="#Score" class="easyui-linkbutton" iconCls="icon-remove"
+										plain="true"
 										onclick="javascript:$('#Score').edatagrid('destroyRow')">删除</a>
-									<a href="#Score" class="easyui-linkbutton"
-										iconCls="icon-save" plain="true"
-										onclick="javascript:$('#Score').edatagrid('saveRow')">保存</a>
-									<a href="#Score" class="easyui-linkbutton"
-										iconCls="icon-undo" plain="true"
+									<a href="#Score" class="easyui-linkbutton" iconCls="icon-save"
+										plain="true"
+										onclick="javascript:$('#Score').edatagrid('saveRow')">保存</a> <a
+										href="#Score" class="easyui-linkbutton" iconCls="icon-undo"
+										plain="true"
 										onclick="javascript:$('#Score').edatagrid('cancelRow')">取消</a>
 								</div>
 							</div>
 						</div>
 						<div class="tab-pane" id="panel-75376">
-
-							<div class="span6">
-								<label>试题类型</label>
-								<div class="row-fluid">
-									<div class="btn-group">
-										<button class="btn" id="addQuestionType">请选择</button>
-										<button data-toggle="dropdown" class="btn dropdown-toggle">
-											<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a
-												href="javascript:SetQstCont('选择题', 'addQuestionType')">选择题</a>
-											</li>
-											<li><a
-												href="javascript:SetQstCont('计算题', 'addQuestionType')">计算题</a>
-											</li>
-										</ul>
-									</div>
+							<div>
+								<table id="Teacher" title="教师库"
+									style="width: 700px; height: 250px" toolbar="#TeacherToolbar"
+									pagination="true" idField="id" rownumbers="true"
+									fitColumns="true" singleSelect="true">
+									<thead>
+										<tr>
+											<th field="name" width="50"
+												editor="{type:'validatebox',options:{required:true}}">用户名</th>
+											<th field="password" width="50"
+												editor="{type:'validatebox',options:{required:true}}">密码</th>
+											<th field="sex" width="50"
+												editor="{type:'validatebox',options:{required:true}}">性别</th>
+											<th field="age" width="50"
+												editor="{type:'validatebox',options:{required:true}}">年龄</th>
+											<th field="department" width="50"
+												editor="{type:'validatebox',options:{required:true}}">专业</th>
+											<th field="profession" width="50"
+												editor="{type:'validatebox',options:{required:true}}">系别</th>
+											<th field="authority" width="50"
+												editor="{type:'validatebox',options:{required:true}}">权限</th>
+											<th field="note" width="50"
+												editor="{type:'validatebox',options:{required:true}}">备注</th>
+										</tr>
+									</thead>
+								</table>
+								<div id="TeacherToolbar">
+									<a href="#Teacher" class="easyui-linkbutton" iconCls="icon-add"
+										plain="true"
+										onclick="javascript:$('#Teacher').edatagrid('addRow')">添加</a>
+									<a href="#Teacher" class="easyui-linkbutton"
+										iconCls="icon-remove" plain="true"
+										onclick="javascript:$('#Teacher').edatagrid('destroyRow')">删除</a>
+									<a href="#Teacher" class="easyui-linkbutton"
+										iconCls="icon-save" plain="true"
+										onclick="javascript:$('#Teacher').edatagrid('saveRow')">保存</a>
+									<a href="#Teacher" class="easyui-linkbutton"
+										iconCls="icon-undo" plain="true"
+										onclick="javascript:$('#Teacher').edatagrid('cancelRow')">取消</a>
 								</div>
-								<label class="control-label" for="addProfession">专业</label>
-								<div class="controls">
-									<input id="addProfession" type="text" disabled="true" />
-								</div>
-								<label class="control-label" for="addDegreeOfDifficulty">难易程度</label>
-								<div class="controls">
-									<input id="addDegreeOfDifficulty" type="text" />
-								</div>
-								<label class="control-label" for="addQuestionScore">试题分数</label>
-								<div class="controls">
-									<input id="addQuestionScore" type="text" />
-								</div>
-								<label class="control-label" for="addTeacherId">教师编号</label>
-								<div class="controls">
-									<input id="addTeacherId" type="text" disabled="true" />
-								</div>
-								<label class="control-label" for="addNote">备注</label>
-								<div class="controls">
-									<input id="addNote" type="text" />
-								</div>
-                                <button onclick="addQst()" class="btn" >提交题目</button>
 							</div>
-							<div class="span6">
-								<div id="questionContent">
-									
+						</div>
+						<div class="tab-pane" id="panel-73276">
+							<div>
+								<table id="Student" title="学生库"
+									style="width: 700px; height: 250px"
+									toolbar="#StudentToolbar" pagination="true" idField="id"
+									rownumbers="true" fitColumns="true" singleSelect="true">
+									<thead>
+										<tr>
+											<th field="name" width="50"
+												editor="{type:'validatebox',options:{required:true}}">用户名</th>
+											<th field="password" width="50"
+												editor="{type:'validatebox',options:{required:true}}">密码</th>
+											<th field="ethnic" width="50"
+												editor="{type:'validatebox',options:{required:true}}">民族</th>
+											<th field="className" width="50"
+												editor="{type:'validatebox',options:{required:true}}">班级</th>
+											<th field="age" width="50"
+												editor="{type:'validatebox',options:{required:true}}">年龄</th>
+											<th field="department" width="50"
+												editor="{type:'validatebox',options:{required:true}}">专业</th>
+											<th field="authority" width="50"
+												editor="{type:'validatebox',options:{required:true}}">系别</th>
+											<th field="note" width="50"
+												editor="{type:'validatebox',options:{required:true}}">备注</th>
+										</tr>
+									</thead>
+								</table>
+								<div id="StudentToolbar">
+									<a href="#Student" class="easyui-linkbutton"
+										iconCls="icon-add" plain="true"
+										onclick="javascript:$('#Student').edatagrid('addRow')">添加</a>
+									<a href="#Student" class="easyui-linkbutton"
+										iconCls="icon-remove" plain="true"
+										onclick="javascript:$('#Student').edatagrid('destroyRow')">删除</a>
+									<a href="#Student" class="easyui-linkbutton"
+										iconCls="icon-save" plain="true"
+										onclick="javascript:$('#Student').edatagrid('saveRow')">保存</a>
+									<a href="#Student" class="easyui-linkbutton"
+										iconCls="icon-undo" plain="true"
+										onclick="javascript:$('#Student').edatagrid('cancelRow')">取消</a>
 								</div>
 							</div>
 						</div>
@@ -233,45 +294,15 @@ form {
 						<div class="tab-pane active" id="panel-75678">
 							<div class="row-fluid">
 								<div class="control-group">
-									<label class="control-label" for="showName">姓名</label>
+									<label class="control-label" for="showName">用户名</label>
 									<div class="controls">
 										<input id="showName" type="text" disabled="true" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="showSex">性别</label>
-									<div class="controls">
-										<input id="showSex" type="text" disabled="true" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="showAge">年龄</label>
-									<div class="controls">
-										<input id="showAge" type="text" disabled="true" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="showDepartment">专业</label>
-									<div class="controls">
-										<input id="showDepartment" type="text" disabled="true" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="showProfession">系别</label>
-									<div class="controls">
-										<input id="showProfession" type="text" disabled="true" />
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="showAuthority">权限</label>
 									<div class="controls">
 										<input id="showAuthority" type="text" disabled="true" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="showNote">备注</label>
-									<div class="controls">
-										<input id="showNote" type="text" disabled="true" />
 									</div>
 								</div>
 							</div>
@@ -291,39 +322,9 @@ form {
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label" for="sex">性别</label>
-									<div class="controls">
-										<input id="sex" type="text" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="age">年龄</label>
-									<div class="controls">
-										<input id="age" type="text" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="department">专业</label>
-									<div class="controls">
-										<input id="department" type="text" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="profession">系别</label>
-									<div class="controls">
-										<input id="profession" type="text" />
-									</div>
-								</div>
-								<div class="control-group">
 									<label class="control-label" for="authority">权限</label>
 									<div class="controls">
 										<input id="authority" type="text" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="note">备注</label>
-									<div class="controls">
-										<input id="note" type="text" />
 									</div>
 								</div>
 								<div>

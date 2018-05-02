@@ -5,6 +5,7 @@ public class Admin {
     private String name;
     private String password;
     private Integer authority;
+    private boolean success;
 
     public Integer getId() {
         return id;
@@ -38,9 +39,18 @@ public class Admin {
         this.authority = authority;
     }
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
     @Override
     public String toString() {
-        return "Admin [id=" + id + ", name=" + name + ", password=" + password + ", authority=" + authority + "]";
+        return "Admin [id=" + id + ", name=" + name + ", password=" + password + ", authority=" + authority
+                + ", success=" + success + "]";
     }
 
 }
