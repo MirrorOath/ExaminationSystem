@@ -172,7 +172,7 @@ function getTestPaper(hard){
         type : "post",
         dateType : "json",
         success : function(data) {
-            if (data == null)
+            if (data == null || data == "null")
                 alert("该专业无试题，请老师添加");
             str = "";
             $.each(data, function(n, index){

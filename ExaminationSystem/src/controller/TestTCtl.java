@@ -40,17 +40,24 @@ public class TestTCtl {
 
     @RequestMapping("getTestPaper")
     public @ResponseBody List<Question> getTestPaper(Integer hard) {
+        if(hard == null)
+            return null;
         List<Question> all = null;
         switch (hard) {
         case 1:
         case 2:
         case 3:
+        case 4:
             all = questionDao.getListByHard(hard);
+            break;
         case 0:
-        default:
             all = questionDao.getAll();
             break;
+        default:
+            return null;
         }
+        if(all.size() < 3)
+            return null;
         List<Question> result = new ArrayList<Question>();
         while (result.size() < 3) {
             int index = (int) (Math.random() * all.size());

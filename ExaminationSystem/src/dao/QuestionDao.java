@@ -46,7 +46,7 @@ public class QuestionDao extends UtilDao<Question> {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
         
-        Query query = session.createQuery("from Question where degreeOfDifficulty = hard");
+        Query query = session.createQuery("from Question where degreeOfDifficulty = ?");
         query.setString(0, hard.toString());
         List<Question> qsts = query.list();
 

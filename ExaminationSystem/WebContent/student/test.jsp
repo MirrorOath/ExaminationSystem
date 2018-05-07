@@ -40,6 +40,8 @@ window.onload = function() {
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
+                        <li><a href="javascript:getTestPaper(0)">任意</a>
+                        </li>
 						<li><a href="javascript:getTestPaper(1)">1</a>
 						</li>
 						<li><a href="javascript:getTestPaper(2)">2</a>
