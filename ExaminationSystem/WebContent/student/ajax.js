@@ -158,30 +158,38 @@ function signOut() {
 }
 
 
-function getTestPaper(){
+function getTestPaper(hard){
+    if(hard == 0)
+        document.getElementById("qstHard").innerHTML = "任意";
+    else
+        document.getElementById("qstHard").innerHTML = hard;
+    document.getElementById("questionContent").innerHTML = "";
     $.ajax({
         url : "../jnTest/getTestPaper.action",
+        data : {
+            hard : hard
+        },
         type : "post",
         dateType : "json",
         success : function(data) {
             if (data == null)
                 alert("该专业无试题，请老师添加");
+            str = "";
             $.each(data, function(n, index){
                 document.getElementById("startTime").value = index.startTime;
-                document.getElementById("questionContent").innerHTML 
-                    += "题型: " + index.questionType + "。";
-                document.getElementById("questionContent").innerHTML 
-                    += "分数: " + index.questionScore;
-                document.getElementById("questionContent").innerHTML += index.questionContent;
-                document.getElementById("questionContent").innerHTML 
-                    += "<button class='btn' value='" + index.id +
-                    		"' id='qstId" + n +
-                    		"' >请输入答案</button>"
-                    + "<div class='controls'><input id='questionAnswer" + n + 
-                    		"' type='text' /></div><hr/><br/><hr/>";
+                
+                str += "题型: " + index.questionType + "。"
+                    + "分数: " + index.questionScore
+                    + index.questionContent
+                    + "<button class='btn' value='" + index.id
+                    +"' id='qstId" + n
+                    + "' >请输入答案</button>"
+                    + "<div class='controls'><input id='questionAnswer" + n 
+                    + "' type='text' /></div><hr/><br/><hr/>";
             })
+            document.getElementById("questionContent").innerHTML = str;
             document.getElementById("subBtn").innerHTML 
-                += "<button onclick='postTestPaper()' class='btn' >提交试卷</button>";
+                = "<button onclick='postTestPaper()' class='btn' >提交试卷</button>";
         }
     })
 }

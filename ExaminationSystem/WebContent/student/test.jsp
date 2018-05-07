@@ -12,7 +12,7 @@
 	src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>
 <script type="text/javascript">
 window.onload = function() {
-    getTestPaper();
+    getTestPaper(0);
     testPageGetStuInfo();
 }
 </script>
@@ -30,6 +30,25 @@ window.onload = function() {
 				<label class="control-label" for="TestName">试卷名称</label>
 				<div class="controls">
 					<input id="TestName" type="text" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label>试卷难度</label>
+				<div class="btn-group">
+					<button class="btn" id="qstHard">任意</button>
+					<button data-toggle="dropdown" class="btn dropdown-toggle">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="javascript:getTestPaper(1)">1</a>
+						</li>
+						<li><a href="javascript:getTestPaper(2)">2</a>
+						</li>
+						<li><a href="javascript:getTestPaper(3)">3</a>
+						</li>
+						<li><a href="javascript:getTestPaper(4)">4</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div class="control-group">

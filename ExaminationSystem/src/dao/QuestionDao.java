@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -39,4 +40,19 @@ public class QuestionDao extends UtilDao<Question> {
         session.close();
         return oldObj;
     }
+    
+    @SuppressWarnings("unchecked")
+    public List<Question> getListByHard(Integer hard){
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+        
+        Query query = session.createQuery("from Question where degreeOfDifficulty = hard");
+        query.setString(0, hard.toString());
+        List<Question> qsts = query.list();
+
+        tx.commit();
+        session.close();
+        return qsts;
+    }
+    
 }

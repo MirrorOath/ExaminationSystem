@@ -39,8 +39,18 @@ public class TestTCtl {
     }
 
     @RequestMapping("getTestPaper")
-    public @ResponseBody List<Question> getTestPaper() {
-        List<Question> all = questionDao.getAll();
+    public @ResponseBody List<Question> getTestPaper(Integer hard) {
+        List<Question> all = null;
+        switch (hard) {
+        case 1:
+        case 2:
+        case 3:
+            all = questionDao.getListByHard(hard);
+        case 0:
+        default:
+            all = questionDao.getAll();
+            break;
+        }
         List<Question> result = new ArrayList<Question>();
         while (result.size() < 3) {
             int index = (int) (Math.random() * all.size());
@@ -103,7 +113,7 @@ public class TestTCtl {
             scoreObj.setCourseName(department);
             scoreDao.save(scoreObj);
         }
-        
+
         return true;
     }
 
